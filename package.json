@@ -1,0 +1,19 @@
+{
+  "name": "make-chat",
+  "version": "1.0.0",
+  "description": "Web Socket chatting app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruot-nyak/make-chat.git"
+  },
+  "author": "Ruot Nyak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruot-nyak/make-chat/issues"
+  },
+  "homepage": "https://github.com/ruot-nyak/make-chat#readme"
+}
