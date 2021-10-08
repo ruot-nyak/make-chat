@@ -6,10 +6,11 @@ const server = require('http').Server(app);
 
 //Socket.io
 const io = require('socket.io')(server);
+let onlineUsers = {};
 
 io.on("connection", (socket) => {
     console.log('User Connected')
-    require('./public/sockets/chat')(io, socket);
+    require('./public/sockets/chat')(io, socket, onlineUsers);
 })
 
 
