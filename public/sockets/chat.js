@@ -6,5 +6,11 @@ module.exports = (io, socket) => {
         //Send the username to all clients currently connected
         io.emit("new user", username);
     })
+
+    socket.on('new message', (data) => {
+        console.log(`${data.sender} just posted a new message!`);
+        //posting the message to all users
+        io.emit('new message', data);
+    })
     
 }
