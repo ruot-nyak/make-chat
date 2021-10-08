@@ -7,10 +7,11 @@ const server = require('http').Server(app);
 //Socket.io
 const io = require('socket.io')(server);
 let onlineUsers = {};
+let channels = {"General" : []};
 
 io.on("connection", (socket) => {
     console.log('User Connected')
-    require('./public/sockets/chat')(io, socket, onlineUsers);
+    require('./public/sockets/chat')(io, socket, onlineUsers, channels);
 })
 
 
