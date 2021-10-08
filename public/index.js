@@ -29,10 +29,12 @@ $(document).ready(()=>{
   $('#send-chat-btn').click((e)=>{
     e.preventDefault();
     let message = $('#chat-input').val();
+    let channel = $('.channel-current').text();
     if(message.length > 0){
       socket.emit('new message', {
         sender : currentUser,
         message : message,
+        channel : channel,
       });
       $('#chat-input').val("");
     }
@@ -71,13 +73,17 @@ $(document).ready(()=>{
   })
 
   socket.on('new message', (data) => {
-    $('.message-container').append(`
-      <div class="message">
-        <p class="message-user">${data.sender}: </p>
-        <p class="message-text">${data.message}</p>
-      </div>
-    `);
-  })
+    //Only append the message if the user is currently in that channel
+    let currentChannel = $('.channel-current').text();
+    if(currentChannel == data.channel) {
+      $('.message-container').append(`
+        <div class="message">
+          <p class="message-user">${data.sender}: </p>
+          <p class="message-text">${data.message}</p>
+        </div>
+      `);
+    }
+  });
 
   socket.on('get online users', (onlineUsers) => {
     //Loop through username for all onlineUsers
