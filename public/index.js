@@ -101,6 +101,12 @@ $(document).ready(()=>{
     }
   })
 
+  socket.on('update channels', (allChannels) => {
+    for(channels in allChannels){
+      $('.channels').append(`<div class="channel">${newChannel}</div>`);
+    }
+  })
+
   socket.on('user has left', (onlineUsers) => {
     $('.users-online').empty();
     for(username in onlineUsers){
